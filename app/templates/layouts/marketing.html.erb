@@ -21,6 +21,13 @@
         </div>
     </header>
 
+  <%#= app_form_for :search, url: "/search", method: :get, class: "flex flex-col gap-2 items-center" do |f| %>
+    <%#= f.label :q, "Search" %>
+    <%#= f.text_field :q, placeholder: "Search...", disabled: true, class: "flex-1" %>
+    <%#= f.password_field :pass, placeholder: "Password...", class: "flex-1" %>
+    <%#= f.submit "Search" %>
+  <%# end %>
+
     <!-- Content -->
     <%= yield %>
 
