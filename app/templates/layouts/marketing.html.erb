@@ -15,6 +15,7 @@
           <div class="flex items-center justify-between">
             <div class="text-xl font-bold text-primary">forked.sh</div>
             <nav class="flex items-center gap-6 text-sm text-secondary">
+              <%= link_to "Sign In", routes.path(:new_session), class: "hover:text-primary transition-colors" %>
               <%= link_to "Updates", routes.path(:root), class: "hover:text-primary transition-colors" %>
             </nav>
           </div>

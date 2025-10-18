@@ -29,7 +29,7 @@ module Forked
           end
 
           form_html = tag.form(**form_options) do
-            csrf_html = method != :get ? hidden_field_tag("_csrf_token", csrf_token) : ""
+            csrf_html = method != :get ? tag.input(name: "_csrf_token", value: csrf_token, type: "hidden") : ""
             method_html = method_override_field(method) if [:put, :patch, :delete].include?(method)
 
             builder = FormBuilder.new(resolved_model, self)
@@ -46,7 +46,7 @@ module Forked
         private
 
         def method_override_field(method)
-          hidden_field_tag("_method", method.to_s) if [:put, :patch, :delete].include?(method)
+          tag.input(name: "_method", value: method.to_s, type: "hidden") if [:put, :patch, :delete].include?(method)
         end
 
         def safe_join(array)
@@ -59,6 +59,15 @@ module Forked
           def initialize(model, template)
             @model = model
             @template = template
+          end
+
+          def hidden_field_tag(name, value, options = {})
+            template.tag.input(
+              type: "hidden",
+              name: name,
+              value: value,
+              **options
+            )
           end
 
           def text_field(method, options = {})

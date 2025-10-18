@@ -3,9 +3,7 @@
 module Forked
   module Views
     module Home
-      class Index < Forked::View
-        config.layout = "marketing"
-
+      class Index < Forked::MarketingView
         expose :page_title do
           "Welcome to Forked.sh"
         end

@@ -5,5 +5,6 @@ module Forked
     # Define your app settings here, for example:
     #
     # setting :my_flag, default: false, constructor: Types::Params::Bool
+    setting :session_secret, constructor: Types::String
   end
 end
