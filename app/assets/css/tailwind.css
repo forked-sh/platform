@@ -3,6 +3,482 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: 'Quicksand', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@layer utilities {
+  .text-primary {
+    @apply text-black dark:text-stone-100;
+  }
+
+  .text-secondary {
+    @apply text-stone-600 dark:text-stone-400;
+  }
+
+  .text-subtle {
+    @apply text-stone-500 dark:text-stone-500;
+  }
+
+  .bg-primary {
+    @apply bg-white dark:bg-stone-950;
+  }
+
+  .bg-secondary {
+    @apply bg-stone-50 dark:bg-stone-900;
+  }
+
+  .bg-subtle {
+    @apply bg-stone-100 dark:bg-stone-800;
+  }
+
+  .border-primary {
+    @apply border-stone-200 dark:border-stone-800;
+  }
+
+  .border-secondary {
+    @apply border-stone-200 dark:border-stone-700;
+  }
+
+  .border-subtle {
+    @apply border-stone-300 dark:border-stone-600;
+  }
+
+  .hover\:bg-secondary:hover {
+    @apply hover:bg-stone-50 dark:hover:bg-stone-900;
+  }
+
+  /* Pride Theme */
+  .bg-pride-gradient {
+    background: linear-gradient(135deg, #ff0000 0%, #ff8c00 16.67%, #ffd700 33.33%, #008000 50%, #0000ff 66.67%, #8b00ff 83.33%, #ff69b4 100%);
+  }
+
+  .text-pride {
+    background: linear-gradient(135deg, #ff6b6b, #ffa726, #ffcc02, #66bb6a, #42a5f5, #ab47bc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: pride-shimmer 6s ease-in-out infinite;
+    opacity: 0.8;
+  }
+
+  .border-pride {
+    border-image: linear-gradient(135deg, #ff0000, #ff8c00, #ffd700, #008000, #0000ff, #8b00ff) 1;
+  }
+
+  @keyframes pride-shimmer {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Rouge syntax highlighting - GitHub-like theme */
+  .highlight {
+    background-color: #f6f8fa !important;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
+    padding: 1rem !important;
+  }
+
+  .highlight pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow-x: auto !important;
+    white-space: pre !important;
+  }
+
+  /* Light mode syntax highlighting */
+  .highlight .k,
+  pre .k {
+    color: #d73a49 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Keywords - red */
+  .highlight .nn,
+  pre .nn {
+    color: #6f42c1 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Namespace - purple */
+  .highlight .nc,
+  pre .nc {
+    color: #6f42c1 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Class - purple */
+  .highlight .no,
+  pre .no {
+    color: #005cc5 !important;
+  }
+
+  /* Constants - blue */
+  .highlight .o,
+  pre .o {
+    color: #d73a49 !important;
+  }
+
+  /* Operators - red */
+  .highlight .p,
+  pre .p {
+    color: #24292e !important;
+  }
+
+  /* Punctuation - dark gray */
+  .highlight .s2,
+  .highlight .s1,
+  pre .s2,
+  pre .s1 {
+    color: #032f62 !important;
+  }
+
+  /* Strings - dark blue */
+  .highlight .mi,
+  .highlight .mf,
+  pre .mi,
+  pre .mf {
+    color: #005cc5 !important;
+  }
+
+  /* Numbers - blue */
+  .highlight .kc,
+  pre .kc {
+    color: #005cc5 !important;
+  }
+
+  /* Constants - blue */
+  .highlight .c1,
+  .highlight .c,
+  pre .c1,
+  pre .c {
+    color: #6a737d !important;
+    font-style: italic !important;
+  }
+
+  /* Comments - gray italic */
+  .highlight .err,
+  pre .err {
+    background: none !important;
+    color: #24292e !important;
+  }
+
+  /* ERB-specific highlighting */
+  .highlight .cp,
+  pre .cp {
+    color: #d73a49 !important;
+    background: #f1f8ff !important;
+    font-weight: 600 !important;
+  }
+
+  /* ERB tags */
+  .highlight .nt,
+  pre .nt {
+    color: #22863a !important;
+    font-weight: 600 !important;
+  }
+
+  /* HTML tags */
+  .highlight .na,
+  pre .na {
+    color: #6f42c1 !important;
+  }
+
+  /* HTML attributes */
+  .highlight .s,
+  pre .s {
+    color: #032f62 !important;
+  }
+
+  /* Attribute values */
+
+  /* Dark mode syntax highlighting */
+  @media (prefers-color-scheme: dark) {
+    .highlight {
+      background-color: #0d1117 !important;
+      color: #e6edf3 !important;
+    }
+
+    .highlight .k,
+    pre .k {
+      color: #ff7b72 !important;
+      font-weight: 600 !important;
+    }
+
+    /* Keywords - light red */
+    .highlight .nn,
+    pre .nn {
+      color: #d2a8ff !important;
+      font-weight: 600 !important;
+    }
+
+    /* Namespace - light purple */
+    .highlight .nc,
+    pre .nc {
+      color: #d2a8ff !important;
+      font-weight: 600 !important;
+    }
+
+    /* Class - light purple */
+    .highlight .no,
+    pre .no {
+      color: #79c0ff !important;
+    }
+
+    /* Constants - light blue */
+    .highlight .o,
+    pre .o {
+      color: #ff7b72 !important;
+    }
+
+    /* Operators - light red */
+    .highlight .p,
+    pre .p {
+      color: #e6edf3 !important;
+    }
+
+    /* Punctuation - light gray */
+    .highlight .s2,
+    .highlight .s1,
+    pre .s2,
+    pre .s1 {
+      color: #a5d6ff !important;
+    }
+
+    /* Strings - light blue */
+    .highlight .mi,
+    .highlight .mf,
+    pre .mi,
+    pre .mf {
+      color: #79c0ff !important;
+    }
+
+    /* Numbers - light blue */
+    .highlight .kc,
+    pre .kc {
+      color: #79c0ff !important;
+    }
+
+    /* Constants - light blue */
+    .highlight .c1,
+    .highlight .c,
+    pre .c1,
+    pre .c {
+      color: #8b949e !important;
+      font-style: italic !important;
+    }
+
+    /* Comments - gray italic */
+    .highlight .err,
+    pre .err {
+      background: none !important;
+      color: #e6edf3 !important;
+    }
+
+    /* ERB-specific highlighting - dark mode */
+    .highlight .cp,
+    pre .cp {
+      color: #ff7b72 !important;
+      background: #1c2128 !important;
+      font-weight: 600 !important;
+    }
+
+    /* ERB tags */
+    .highlight .nt,
+    pre .nt {
+      color: #7ee787 !important;
+      font-weight: 600 !important;
+    }
+
+    /* HTML tags */
+    .highlight .na,
+    pre .na {
+      color: #d2a8ff !important;
+    }
+
+    /* HTML attributes */
+    .highlight .s,
+    pre .s {
+      color: #a5d6ff !important;
+    }
+
+    /* Attribute values */
+  }
+
+  /* Prose/Markdown styling */
+  .prose {
+    color: inherit !important;
+  }
+
+  .prose h1 {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+    margin-top: 0 !important;
+    margin-bottom: 1em !important;
+    border-bottom: 1px solid theme('colors.stone.200') !important;
+    padding-bottom: 0.3em !important;
+  }
+
+  .prose h2 {
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    margin-top: 1.5em !important;
+    margin-bottom: 0.5em !important;
+    border-bottom: 1px solid theme('colors.stone.200') !important;
+    padding-bottom: 0.3em !important;
+  }
+
+  .prose h3 {
+    font-size: 1.25em !important;
+    font-weight: 600 !important;
+    margin-top: 1.5em !important;
+    margin-bottom: 0.5em !important;
+  }
+
+  .prose p {
+    margin-top: 0 !important;
+    margin-bottom: 1em !important;
+    line-height: 1.6 !important;
+  }
+
+  .prose ul,
+  .prose ol {
+    margin-top: 0 !important;
+    margin-bottom: 1em !important;
+    padding-left: 2em !important;
+  }
+
+  .prose li {
+    margin-top: 0.25em !important;
+    margin-bottom: 0.25em !important;
+  }
+
+  .prose code {
+    background: theme('colors.stone.100') !important;
+    padding: 0.125rem 0.25rem !important;
+    border-radius: 0.25rem !important;
+    font-size: 0.875em !important;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
+  }
+
+  .prose pre {
+    background: theme('colors.stone.100') !important;
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+    overflow-x: auto !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+  }
+
+  .prose pre code {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .prose blockquote {
+    border-left: 4px solid theme('colors.stone.300') !important;
+    padding-left: 1rem !important;
+    margin-left: 0 !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    font-style: italic !important;
+    color: theme('colors.stone.600') !important;
+  }
+
+  .prose table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+  }
+
+  .prose th,
+  .prose td {
+    border: 1px solid theme('colors.stone.300') !important;
+    padding: 0.5rem !important;
+    text-align: left !important;
+  }
+
+  .prose th {
+    background: theme('colors.stone.100') !important;
+    font-weight: 600 !important;
+  }
+
+  /* Dark mode prose styling */
+  @media (prefers-color-scheme: dark) {
+    .prose h1 {
+      border-bottom-color: theme('colors.stone.700') !important;
+    }
+
+    .prose h2 {
+      border-bottom-color: theme('colors.stone.700') !important;
+    }
+
+    .prose code {
+      background: theme('colors.stone.800') !important;
+    }
+
+    .prose pre {
+      background: theme('colors.stone.800') !important;
+    }
+
+    .prose blockquote {
+      border-left-color: theme('colors.stone.600') !important;
+      color: theme('colors.stone.400') !important;
+    }
+
+    .prose th,
+    .prose td {
+      border-color: theme('colors.stone.600') !important;
+    }
+
+    .prose th {
+      background: theme('colors.stone.800') !important;
+    }
+  }
+
+  /* Emoji Picker Styling */
+  emoji-picker {
+    --background: theme('colors.stone.50');
+    --border-color: theme('colors.stone.200');
+    --button-active-background: theme('colors.stone.100');
+    --button-hover-background: theme('colors.stone.100');
+    --input-border-color: theme('colors.stone.200');
+    --input-font-color: theme('colors.stone.900');
+    --input-font-size: 14px;
+    --input-line-height: 1.5;
+    --input-padding: 8px 12px;
+    --outline-color: theme('colors.blue.500');
+    --category-font-color: theme('colors.stone.600');
+    --category-font-size: 12px;
+    --num-columns: 8;
+    --emoji-size: 1.375rem;
+    width: 300px;
+    height: 350px;
+  }
+
+  /* Dark mode emoji picker styling */
+  .dark emoji-picker {
+    --background: theme('colors.stone.900');
+    --border-color: theme('colors.stone.700');
+    --button-active-background: theme('colors.stone.800');
+    --button-hover-background: theme('colors.stone.800');
+    --input-border-color: theme('colors.stone.600');
+    --input-font-color: theme('colors.stone.100');
+    --category-font-color: theme('colors.stone.400');
+  }
+
+  /* Container for the picker to ensure proper positioning */
+  .emoji-picker {
+    min-width: 300px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .emoji-picker {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  }
 }

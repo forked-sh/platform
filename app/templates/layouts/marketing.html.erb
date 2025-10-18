@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for(:title) || "forked.sh" %></title>
+    <%= favicon_tag %>
+    <%= stylesheet_tag "app" %>
+</head>
+
+  <body class="bg-primary text-primary min-h-screen font-sans antialiased flex flex-col">
+      <!-- Content -->
+      <%= yield %>
+      <%= javascript_tag "app" %>
+  </body>
+</html>
