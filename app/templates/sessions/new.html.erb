@@ -19,7 +19,6 @@
       autofocus: true,
       autocomplete: "username",
       placeholder: "Enter your email",
-      label: "Email",
       class: "mb-4" %>
 
   <%= form.label :password, "Password" %>
@@ -28,7 +27,6 @@
       autocomplete: "current-password",
       placeholder: "Enter your password",
       maxlength: 72,
-      label: "Password",
       class: "mb-4" %>
 
   <div class="pt-2">
@@ -42,7 +40,7 @@
 
   <div class="text-center pt-4 border-t border-secondary mt-6">
     <p class="text-secondary text-sm mb-2">Don't have an account?</p>
-    <%= link_to "Create account", routes.path(:root),
+    <%= link_to "Create account", routes.path(:new_registration),
         class: "text-pride dark:text-stone-400 hover:text-black dark:hover:text-stone-100 text-sm font-medium" %>
   </div>
 <% end %>

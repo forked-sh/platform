@@ -6,7 +6,7 @@ module Forked
       class Register < Forked::Operation
         include Deps["repos.user_repo", "utils.hasher"]
 
-        INVITE_CODE = "afomera-invite-only-code"
+        INVITE_CODE = "afomera-invite-code-#{Hanami.env}"
 
         def call(params)
           step validate_invite_code(params[:invite_code], INVITE_CODE)

@@ -11,6 +11,12 @@ module Forked
 
     private
 
+    def render_on_failure(response, template, message: "An error occurred.")
+      response.flash.now[:error] = message
+      body = response.render(template, values: response.request.params.to_h, errors: response.request.params.errors)
+      halt(400, body)
+    end
+
     def render_on_invalid_params(response, template, message: "Invalid parameters.")
       if !response.request.params.valid?
         response.flash.now[:error] = message

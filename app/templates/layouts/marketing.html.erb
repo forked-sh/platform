@@ -13,7 +13,9 @@
     <header class="bg-primary border-b border-primary">
         <div class="max-w-4xl mx-auto px-6 py-4">
           <div class="flex items-center justify-between">
-            <div class="text-xl font-bold text-primary">forked.sh</div>
+            <div class="text-xl font-bold text-primary">
+              <%= link_to "forked.sh", routes.path(:root), class: "hover:text-primary transition-colors" %>
+            </div>
             <nav class="flex items-center gap-6 text-sm text-secondary">
               <%= link_to "Sign In", routes.path(:new_session), class: "hover:text-primary transition-colors" %>
               <%= link_to "Updates", routes.path(:root), class: "hover:text-primary transition-colors" %>
