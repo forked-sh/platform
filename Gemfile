@@ -43,3 +43,4 @@ group :test do
 end
 
 gem "argon2", "~> 2.3"
+gem "useragent", "~> 0.16.11"

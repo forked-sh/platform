@@ -25,9 +25,16 @@ module Forked
       end
     end
 
-    def handle_invalid_params(request, response)
-      response.flash[:error] = "Invalid email or password."
-      response.status = 422
-    end
+    # TODO: Make this work better!
+    # def validate_browser_version(request, _response)
+    #   require "user_agent"
+
+    #   user_agent = UserAgent.parse(request.user_agent)
+    #   if user_agent.browser == "Internet Explorer" && user_agent.version.to_i < 11
+    #     halt 400, "Your browser is not supported."
+    #   else
+    #     halt 406, "Please update your browser." if user_agent.browser == "Safari" && user_agent.version.to_s.to_i <= 24
+    #   end
+    # end
   end
 end
