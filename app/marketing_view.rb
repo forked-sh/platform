@@ -4,7 +4,7 @@
 require "hanami/view"
 
 module Forked
-  class MarketingView < Hanami::View
+  class MarketingView < Forked::View
     config.layout = "marketing"
   end
 end

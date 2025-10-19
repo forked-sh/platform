@@ -8,8 +8,16 @@ module Forked
   class Action < Hanami::Action
     # Provide `Success` and `Failure` for pattern matching on operation results
     include Dry::Monads[:result]
+    include Deps["repos.user_repo"]
+
+    before :set_current_user
 
     private
+
+    def set_current_user(request, response)
+      # response[:current_user] = request.cookies[:user_id]
+      response[:current_user] = user_repo.find_by_id(request.cookies["user_id"])
+    end
 
     def render_on_failure(response, template, message: "An error occurred.")
       response.flash.now[:error] = message

@@ -4,7 +4,7 @@
 require "hanami/view"
 
 module Forked
-  class UnauthenticatedView < Hanami::View
+  class UnauthenticatedView < Forked::View
     config.layout = "unauthenticated"
   end
 end
