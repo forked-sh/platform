@@ -15,8 +15,7 @@ module Forked
     private
 
     def set_current_user(request, response)
-      # response[:current_user] = request.cookies[:user_id]
-      response[:current_user] = user_repo.find_by_id(request.cookies["user_id"])
+      response[:current_user] = user_repo.find_by_id(request.session["user_id"])
     end
 
     def render_on_failure(response, template, message: "An error occurred.")
@@ -30,6 +29,27 @@ module Forked
         response.flash.now[:error] = message
         body = response.render(template, values: response.request.params.to_h, errors: response.request.params.errors)
         halt(422, body)
+      end
+    end
+
+
+    public
+
+    def self.require_unauthenticated_user!
+      before do |request, response|
+        if request.session["user_id"]
+          response.flash[:notice] = "You are already signed in."
+          response.redirect_to routes.path(:dashboard)
+        end
+      end
+    end
+
+    def self.require_authenticated_user!
+      before do |request, response|
+        unless request.session["user_id"]
+          response.flash[:error] = "You must be signed in to access that page."
+          response.redirect_to routes.path(:new_session)
+        end
       end
     end
 

@@ -1,0 +1,10 @@
+<% if current_user %>
+  <%= link_to "Dashboard", routes.path(:dashboard) %>
+  <%= link_to "Sign out", routes.path(:destroy_session) %>
+  <%= app_form_for(:session, url: routes.path(:destroy_session), method: :delete) do |f| %>
+    <%= f.submit "Sign out" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign in", routes.path(:new_session) %>
+  <%= link_to "Register", routes.path(:new_registration) %>
+<% end %>

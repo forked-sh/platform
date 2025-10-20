@@ -8,7 +8,9 @@
     <%= stylesheet_tag "app" %>
   </head>
   <body>
+    <%= render "layouts/navigation" %>
     <%= yield %>
+
     <%= javascript_tag "app" %>
   </body>
 </html>

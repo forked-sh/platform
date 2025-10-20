@@ -22,7 +22,7 @@ module Forked
           )
           in Success(user)
             response.flash[:notice] = "Successfully logged in."
-            response.cookies[:user_id] = user.id
+            response.session[:user_id] = user.id
 
             response.redirect_to routes.path(:new_session) # TODO: change to root or dashboard
           else
