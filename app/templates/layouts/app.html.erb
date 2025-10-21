@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forked</title>
-    <%= favicon_tag %>
-    <%= stylesheet_tag "app" %>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title><%= content_for(:title) || "forked.sh" %></title>
+      <%= favicon_tag %>
+      <%= stylesheet_tag "app" %>
   </head>
-  <body>
-    <%= render "layouts/navigation" %>
-    <%= yield %>
+
+  <body class="bg-primary text-primary min-h-screen font-sans antialiased">
+    <!-- Development Notice -->
+    <div class="bg-yellow-50 border-b border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-800/30">
+      <div class="max-w-7xl mx-auto px-6 py-2">
+        <div class="flex items-center justify-center gap-2 text-sm">
+          <svg class="w-4 h-4 text-yellow-600 dark:text-yellow-400" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+          <span class="text-yellow-800 dark:text-yellow-200">
+            <strong>Alpha Preview:</strong> This service is under active development.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <%= render("layouts/navigation") %>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto p-6">
+        <%= yield %>
+    </main>
 
     <%= javascript_tag "app" %>
   </body>

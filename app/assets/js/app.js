@@ -1,6 +1,6 @@
 import "../css/app.css";
 import DarkModeManager from "./src/DarkModeManager.js";
-
+import "@tailwindplus/elements";
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
