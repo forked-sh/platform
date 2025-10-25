@@ -6,7 +6,7 @@ module Forked
     module Parts
       class User < Forked::Views::Part
         def avatar_url
-          "https://avatars.laravel.cloud/#{email_address.gsub(".sh", "sh")}"
+          "https://avatars.laravel.cloud/#{email_address.gsub(".sh", "-sh")}"
         end
       end
     end

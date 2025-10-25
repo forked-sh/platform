@@ -6,7 +6,7 @@ module Forked
       commands :create, update: :by_pk, delete: :by_pk
 
       def all
-        users.to_a
+        users.combine(:namespaces).to_a
       end
 
       def find_by_id(id)

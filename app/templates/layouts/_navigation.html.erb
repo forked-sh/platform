@@ -9,20 +9,19 @@
 
                 <!-- Main Navigation -->
                 <nav class="hidden md:flex items-center gap-6 text-sm">
-                    <%= link_to "Dashboard", routes.path(:dashboard), class: "text-secondary hover:text-primary transition-color" %>
-                    <%= link_to "Repositories", routes.path(:dashboard), class: "text-secondary hover:text-primary transition-color" %>
-                    <%= link_to "Issues", routes.path(:dashboard), class: "text-secondary hover:text-primary transition-color" %>
-                    <%= link_to "Pull Requests", routes.path(:dashboard), class: "text-secondary hover:text-primary transition-color" %>
-                    <%#= link_to "Issues", user_issues_path, class: nav_link_class("issues") %>
+                  <%= link_to "Dashboard", routes.path(:dashboard), class: nav_link_class("dashboard") %>
+                  <%= link_to "Repositories", routes.path(:dashboard), class: nav_link_class("repositories") %>
+                  <%= link_to "Issues", routes.path(:user_issues), class: nav_link_class("user/issues") %>
+                  <%= link_to "Pull Requests", routes.path(:user_pull_requests), class: nav_link_class("user/pull_requests") %>
                 </nav>
             </div>
 
             <!-- Global Search -->
             <div class="flex-1 max-w-md mx-6">
-                <%= app_form_for :search, url: "", method: :get, class: "w-full" do |form| %>
-                    <%= form.text_field :search, placeholder: "Search repositories, issues, code...",
-                        class: "w-full text-sm" %>
-                <% end %>
+              <%= app_form_for :search, url: "", method: :get, class: "w-full" do |form| %>
+                <%= form.text_field :q, placeholder: "Search repositories, issues, code...",
+                  class: "w-full text-sm" %>
+              <% end %>
             </div>
 
             <!-- User Menu -->

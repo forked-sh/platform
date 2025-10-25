@@ -4,12 +4,13 @@ module Forked
   module Operations
     module Users
       class Register < Forked::Operation
-        include Deps["repos.user_repo", "utils.hasher"]
+        include Deps["repos.user_repo", "repos.namespace_repo", "utils.hasher"]
 
         INVITE_CODE = "afomera-invite-code-#{Hanami.env}"
 
         def call(params)
           step validate_invite_code(params[:invite_code], INVITE_CODE)
+          step validate_no_existing_namespace(params[:username])
           step validate_unique_username(params[:username])
           step validate_no_existing_email(params[:email_address])
           step validate_name(params[:name])
@@ -36,6 +37,14 @@ module Forked
           end
         end
 
+        def validate_no_existing_namespace(username)
+          if namespace_repo.find_by_name(username)
+            Failure(:namespace_already_exists)
+          else
+            Success()
+          end
+        end
+
         def validate_no_existing_email(email_address)
           return Failure(:email_already_exists) if user_repo.find_by_email_address(email_address)
 
@@ -56,6 +65,12 @@ module Forked
             username: params[:username],
             email_address: params[:email_address],
             password_hash: hashed_password
+          )
+
+          namespace_repo.create(
+            name: params[:username],
+            owner_id: user.id,
+            owner_type: "User"
           )
 
           Success(user)
