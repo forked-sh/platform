@@ -441,6 +441,7 @@ DEPENDENCIES
   hanami-validations!
   hanami-view!
   hanami-webconsole!
+  listen
   pg
   puma
   rack-test

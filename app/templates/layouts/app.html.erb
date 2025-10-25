@@ -27,9 +27,10 @@
     <%= render("layouts/navigation") %>
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto p-6">
-        <%= yield %>
+        <%= yield %> 
     </main>
 
     <%= javascript_tag "app" %>
+    <%= javascript_tag live_reload["app.js"] if Hanami.env == :development %>
   </body>
 </html>

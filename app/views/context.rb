@@ -4,6 +4,7 @@ module Forked
   module Views
     class Context < Hanami::View::Context
       include Deps["repos.user_repo"]
+      include LiveReload::Deps[live_reload: "assets"]
 
       def current_user
         return nil unless session["user_id"]

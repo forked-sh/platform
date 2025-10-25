@@ -15,5 +15,8 @@ module Forked
     get "/dashboard", to: "dashboard.index", as: :dashboard
     get "/user/issues", to: "user.issues.index", as: :user_issues
     get "/user/pull_requests", to: "user.pull_requests.index", as: :user_pull_requests
+
+    slice :live_reload, at: "/__live_reload__" do
+    end
   end
 end

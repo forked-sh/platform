@@ -6,7 +6,7 @@ module Dry
       module Colorizers
         class Rouge
           def initialize(theme = nil)
-            @theme = theme || :monokai
+            @theme = theme || :github
             ensure_rouge_loaded
           end
 
@@ -15,7 +15,8 @@ module Dry
 
             # Use Rouge to highlight SQL syntax
             lexer = ::Rouge::Lexers::SQL.new
-            formatter = ::Rouge::Formatters::Terminal256.new(@theme)
+            theme_instance = ::Rouge::Themes.const_get(@theme.to_s.split('_').collect!{ |w| w.capitalize }.join).new
+            formatter = ::Rouge::Formatters::Terminal256.new(theme_instance)
             formatter.format(lexer.lex(query))
           rescue StandardError => e
             # Fallback to plain query if Rouge fails

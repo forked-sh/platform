@@ -18,6 +18,7 @@ gem "rake"
 gem "pg"
 
 group :development do
+  gem "listen"
   gem "hanami-webconsole", github: "hanami/webconsole", branch: "main"
 end
 
